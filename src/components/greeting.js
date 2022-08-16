@@ -18,8 +18,4 @@ const Greeting = () => {
   );
 };
 
-// Greeting.propTypes = {
-//   greeting: PropTypes.string.isRequired,
-// };
-
 export default Greeting;

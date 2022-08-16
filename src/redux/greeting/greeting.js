@@ -7,20 +7,13 @@ const greetingAction = (greeting) => ({
   },
 });
 
-export const getGreeting = () => (dispatch) => {
-  fetch('http://127.0.0.1:3000/messages', {
-    method: 'GET',
-    cors: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  })
+const getGreeting = () => (dispatch) => {
+  fetch('http://127.0.0.1:3001/messages')
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      dispatch(greetingAction(data));
+      dispatch(greetingAction(data.text));
     })
     .catch((error) => {
       console.log(error);
@@ -37,4 +30,4 @@ const greetingReducer = (state = [], action = {}) => {
 };
 
 export default greetingReducer;
-export { greetingAction };
+export { greetingAction, getGreeting };
